@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".MainActivity">
+
+    <View
+        android:id="@+id/view"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"/>
+
+
+    <androidx.camera.view.PreviewView
+        android:id="@+id/previewImage"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/black"
+        tools:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="@id/clButton"
+        app:layout_constraintTop_toBottomOf="@id/view" />
+
+    <com.example.camerax.presentation.CustomFocusCircleView
+        android:id="@+id/focusCircleView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clButton"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="#000000"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <include
+            android:id="@+id/inc_image_preview"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            layout="@layout/side_button"
+            android:elevation="2dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/image_capture_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:id="@+id/image_capture_button"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:elevation="2dp"
+            android:gravity="center"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@drawable/bg_capture_button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"   />
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottie_reverse"
+            android:layout_width="55dp"
+            android:layout_height="45dp"
+            app:lottie_fileName="Animation -reverse.json"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/image_capture_button"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/clFlash"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="16dp">
+
+        <ImageView
+            android:id="@+id/ivFlash"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:visibility="visible"
+            android:scaleType="fitCenter"
+            android:src="@drawable/notflash"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvFlash"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:visibility="gone"
+            tools:listitem="@layout/icon_layout"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:scrollbars="horizontal"
+            android:orientation="horizontal"/>
+
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
